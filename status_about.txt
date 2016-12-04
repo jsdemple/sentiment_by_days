@@ -1,0 +1,81 @@
+Help on class Status in twitter:
+
+twitter.Status = class Status(TwitterModel)
+ |  A class representing the Status structure used by the twitter API.
+ |  
+ |  Method resolution order:
+ |      Status
+ |      TwitterModel
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __repr__(self)
+ |      A string representation of this twitter.Status instance.
+ |      The return value is the ID of status, username and datetime.
+ |      
+ |      Returns:
+ |          string: A string representation of this twitter.Status instance with
+ |          the ID of status, username and datetime.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |  
+ |  NewFromJsonDict(data, **kwargs) from builtins.type
+ |      Create a new instance based on a JSON dict.
+ |      
+ |      Args:
+ |          data: A JSON dict, as converted from the JSON in the twitter API
+ |      
+ |      Returns:
+ |          A twitter.Status instance
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  created_at_in_seconds
+ |      Get the time this status message was posted, in seconds since
+ |      the epoch (1 Jan 1970).
+ |      
+ |      Returns:
+ |          int: The time this status message was posted, in seconds since
+ |          the epoch.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from TwitterModel:
+ |  
+ |  AsDict(self)
+ |      Create a dictionary representation of the object. Please see inline
+ |      comments on construction when dictionaries contain TwitterModels.
+ |  
+ |  AsJsonString(self)
+ |      Returns the TwitterModel as a JSON string based on key/value
+ |      pairs returned from the AsDict() method.
+ |  
+ |  __eq__(self, other)
+ |      Return self==value.
+ |  
+ |  __ne__(self, other)
+ |      Return self!=value.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of TwitterModel. By default
+ |      this is the same as AsJsonString().
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from TwitterModel:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes inherited from TwitterModel:
+ |  
+ |  __hash__ = None
+
