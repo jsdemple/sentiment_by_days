@@ -28,11 +28,11 @@ line_break = '\n'
 handles = ['@codecademy', '@cnn', '@rock', '@nbc', '@cbs']
 
 #iterate over list of handles to compile list of all statuses
-statuses = []
+statuses_master = []
 for handle in handles:
-    statuses.append(twitter_api.GetUserTimeline(screen_name=handle, count=20, include_rts=False))
-print ((statuses))
-
+    statuses = twitter_api.GetUserTimeline(screen_name=handle, count=20, include_rts=False)
+    statuses_master.append(statuses)
+#print (statuses_master)
 
 #counts for each day of week for this handle
 mon_count = 0
@@ -43,81 +43,99 @@ fri_count = 0
 sat_count = 0
 sun_count = 0
 
+#all tweets separated by day of week
+mon_tweets = []
+tue_tweets = []
+wed_tweets = []
+thu_tweets = []
+fri_tweets = []
+sat_tweets = []
+sun_tweets = []
+
+"""ITERATE OVER STATUSES FOR EACH DAY OF WEEK"""
+
 #Monday
-for status in statuses:
-  if (status.lang =='en') and ("Created=Mon" in status.__repr__()) :
-    print (status.text)
-    mon.write(str(status.text))
-    mon.write(str(line_break))
-    mon_count += 1
-mon.close()
-    
+for statuses in statuses_master:
+    for status in statuses:
+        if (status.lang =='en') and ("Created=Mon" in status.__repr__()) :
+            print (status.text)
+            mon_tweets.append(status.text)
+            mon_count += 1
 print ('Monday  ', mon_count, '\n\n')
 
 #Tuesday
-for status in statuses:
-  if (status.lang =='en') and ("Created=Tue" in status.__repr__()) :
-    print (status.text)
-    tue.write(str(status.text))
-    tue.write(str(line_break))
-    tue_count += 1
-tue.close()
-    
+for statuses in statuses_master:
+    for status in statuses:
+        if (status.lang =='en') and ("Created=Tue" in status.__repr__()) :
+            print (status.text)
+            tue_tweets.append(status.text)
+            tue_count += 1
 print ('Tuesday  ', tue_count, '\n\n')
 
 #Wednesday
-for status in statuses:
-  if (status.lang =='en') and ("Created=Wed" in status.__repr__()) :
-    print (status.text)
-    wed.write(str(status.text))
-    wed.write(str(line_break))
-    wed_count += 1
-wed.close()
-    
+for statuses in statuses_master:
+    for status in statuses:
+        if (status.lang =='en') and ("Created=Wed" in status.__repr__()) :
+            print (status.text)
+            wed_tweets.append(status.text)
+            wed_count += 1
 print ('Wednesday  ', wed_count, '\n\n')
 
 #Thursday
-for status in statuses:
-  if (status.lang =='en') and ("Created=Thu" in status.__repr__()) :
-    print (status.text)
-    thu.write(str(status.text))
-    thu.write(str(line_break))
-    thu_count += 1
-thu.close()
-    
+for statuses in statuses_master:
+    for status in statuses:
+        if (status.lang =='en') and ("Created=Thu" in status.__repr__()) :
+            print (status.text)
+            thu_tweets.append(status.text)
+            thu_count += 1
 print ('Thursday  ', thu_count, '\n\n')
 
 #Friday
-for status in statuses:
-  if (status.lang =='en') and ("Created=Fri" in status.__repr__()) :
-    print (status.text)
-    fri.write(str(status.text))
-    fri.write(str(line_break))
-    fri_count += 1
-fri.close()
-    
+for statuses in statuses_master:
+    for status in statuses:
+        if (status.lang =='en') and ("Created=Fri" in status.__repr__()) :
+            print (status.text)
+            fri_tweets.append(status.text)
+            fri_count += 1
 print ('Friday  ', fri_count, '\n\n')
 
 #Saturday
-for status in statuses:
-  if (status.lang =='en') and ("Created=Sat" in status.__repr__()) :
-    print (status.text)
-    sat.write(str(status.text))
-    sat.write(str(line_break))
-    sat_count += 1
-sat.close()
-    
+for statuses in statuses_master:
+    for status in statuses:
+        if (status.lang =='en') and ("Created=Sat" in status.__repr__()) :
+            print (status.text)
+            sat_tweets.append(status.text)
+            sat_count += 1
 print ('Saturday  ', sat_count, '\n\n')
 
 #Sunday
-for status in statuses:
-  if (status.lang =='en') and ("Created=Sun" in status.__repr__()) :
-    print (status.text)
-    sun.write(str(status.text))
-    sun.write(str(line_break))
-    sun_count += 1
-sun.close()
-    
+for statuses in statuses_master:
+    for status in statuses:
+        if (status.lang =='en') and ("Created=Sun" in status.__repr__()) :
+            print (status.text)
+            sun_tweets.append(status.text)
+            sun_count += 1
 print ('Sunday  ', sun_count, '\n\n')
+
+
+mon.write(str(mon_tweets))
+mon.close()
+tue.write(str(tue_tweets))
+tue.close()
+wed.write(str(wed_tweets))
+wed.close()
+thu.write(str(thu_tweets))
+thu.close()
+fri.write(str(fri_tweets))
+fri.close()
+sat.write(str(sat_tweets))
+sat.close()
+sun.write(str(sun_tweets))
+sun.close()
+
+
+
+
+
 
 
