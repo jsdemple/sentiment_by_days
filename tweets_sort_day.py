@@ -3,6 +3,7 @@ import operator
 import requests
 import json
 import twitter
+from time import sleep
 from watson_developer_cloud import PersonalityInsightsV2 as PersonalityInsights
 
 twitter_consumer_key = 'uUf1fCQxmmFTIae8kpsyz7pUg'
@@ -25,14 +26,22 @@ line_break = '\n'
 
 #list of random handles
 #handle variable
-handles = ['@codecademy', '@cnn', '@rock', '@nbc', '@cbs']
+#example handles = ['@codecademy', '@cnn', '@rock', '@nbc', '@cbs']
+handles_file = open('handles_from_textisms.txt', 'r')
+handles = [handle[:-1] for handle in handles_file.readlines()]
+handles_file.close()
+
 
 #iterate over list of handles to compile list of all statuses
 statuses_master = []
-for handle in handles:
+for handle in handles: #RESET THIS TO NO INDEX AFTER DEBUG
     statuses = twitter_api.GetUserTimeline(screen_name=handle, count=20, include_rts=False)
     statuses_master.append(statuses)
 #print (statuses_master)
+
+"""slicing statuses_master for debug"""
+#statuses_master = statuses_master[:5]
+#print ("status\n\n\n\n\n-----------------------",statuses_master)
 
 #counts for each day of week for this handle
 mon_count = 0
@@ -132,10 +141,3 @@ sat.write(str(sat_tweets))
 sat.close()
 sun.write(str(sun_tweets))
 sun.close()
-
-
-
-
-
-
-
